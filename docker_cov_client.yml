@@ -1,0 +1,17 @@
+services:
+  cov-client:
+    build:
+      context: .
+      dockerfile: Dockerfile_cov_client
+    networks:
+      - internal
+    depends_on:
+      - nf
+    environment:
+      # TARGET_DEVICE_ID: 10
+      # BACPYPES_DEBUG: "__main__ bacpypes.udp bacpypes.bvllservice bacpypes.app"
+      BACPYPES_DEBUG: ""
+      # SUBSCRIBE_CONFIRMED: "false"
+      # SUBSCRIBE_PROPERTY_REQUEST: "false"
+      # SUBSCRIPTION_LIFETIME: 60
+      # SUBNET_BITS: 20

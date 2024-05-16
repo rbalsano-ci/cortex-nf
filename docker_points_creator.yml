@@ -1,0 +1,12 @@
+services:
+  points-creator:
+    build:
+      context: .
+      dockerfile: Dockerfile_points
+    networks:
+      - internal
+    environment:
+      - GRPC_PORT=8080
+      - GRPC_HOST=nf
+    depends_on:
+      - nf

@@ -1,0 +1,42 @@
+---
+# 2024-05-09:
+#
+# Note: this docker-compose file is a modified version of 
+# https://github.com/normalframework/nf-sdk/blob/master/docker-compose-2.0.yml.
+
+services:
+
+  cov-client:
+    extends:
+      file: docker_cov_client.yml
+      service: cov-client
+
+  points-creator:
+    extends:
+      file: docker_points_creator.yml
+      service: points-creator
+
+  nf:
+    image: normalframework.azurecr.io/normalframework/nf-full:2.0
+    ports:
+      - "8080:8080"
+    networks:
+      - internal
+    depends_on:
+      - redis
+    tmpfs:
+      - /run:exec
+      - /etc/nginx/conf.d/
+      - /tmp
+    environment:
+      - REDIS_ADDRESS=redis:6379
+#    volumes:
+#      - /tmp/nf:/var
+
+  redis:
+    image: normalframework.azurecr.io/normalframework/redis:2.0
+    networks:
+      - internal
+
+networks:
+  internal:

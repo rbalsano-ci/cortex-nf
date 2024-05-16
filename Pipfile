@@ -1,0 +1,22 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[[source]]
+url = "https://buf.build/gen/python"
+verify_ssl = true
+name = "buf"
+
+[packages]
+bacpypes = "~=0.18.7"
+googleapis-common-protos = "~=1.61.0"
+grpcio = "~=1.59"
+normalframework-nf-protocolbuffers-python = {version = "25.2.0.1.20230202162228+44b33e899986", index = "buf"}
+normalframework-nf-grpc-python = {version = "1.61.0.1.20230202162228+44b33e899986", index = "buf"}
+protobuf = "~=4.25"
+
+[dev-packages]
+
+[requires]
+python_version = "3.11"

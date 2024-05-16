@@ -1,0 +1,13 @@
+FROM python:3.11.9
+
+LABEL authors="Rick Balsano <rick@cortexintel.com>"
+
+RUN pip install pipenv
+
+COPY . cortex-nf
+
+WORKDIR cortex-nf
+
+RUN pipenv install
+
+CMD pipenv run python manage_local_points.py

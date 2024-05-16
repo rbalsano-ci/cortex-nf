@@ -1,0 +1,37 @@
+services:
+
+  cov-client:
+    extends:
+      file: docker_cov_client.yml
+      service: cov-client
+
+  points-creator:
+    extends:
+      file: docker_points_creator.yml
+      service: points-creator
+
+  nf:
+    image: normalframework.azurecr.io/normalframework/nf-full:3.4
+    ports:
+      - "8080:8080"
+    depends_on:
+      - redis
+    tmpfs:
+      - /run:exec
+      - /etc/nginx/conf.d/
+      - /tmp
+    environment:
+      - REDIS_ADDRESS=redis:6379
+    networks:
+      - internal
+
+
+  redis:
+    image: normalframework.azurecr.io/normalframework/redis:3.4
+    networks:
+      - internal
+    ports:
+      - "6379:6379"
+
+networks:
+  internal:
