@@ -24,7 +24,7 @@ Run `bin/setup` to set up the local environment. The script targets OS X and use
 
 To run against NF version 3:
 
-`docker-compose -f docker-compose-nf-3.yml up`
+`docker compose -f docker-compose-nf-3.yml up`
 
 To run against version 2, just change the `3` to a `2`.
 
