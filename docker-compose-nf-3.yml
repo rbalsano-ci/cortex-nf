@@ -11,7 +11,7 @@ services:
       service: points-creator
 
   nf:
-    image: normalframework.azurecr.io/normalframework/nf-full:3.4
+    image: normalframework.azurecr.io/normalframework/nf-full:3.4.1-1
     ports:
       - "8080:8080"
     depends_on:
@@ -27,7 +27,7 @@ services:
 
 
   redis:
-    image: normalframework.azurecr.io/normalframework/redis:3.4
+    image: normalframework.azurecr.io/normalframework/redis:3.4.1-1
     networks:
       - internal
     ports:
